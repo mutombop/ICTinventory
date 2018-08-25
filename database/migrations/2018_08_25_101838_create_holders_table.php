@@ -18,7 +18,7 @@ class CreateHoldersTable extends Migration
             $table->string('firstName', 30);
             $table->string('lastName', 30);
             $table->string('title', 40);
-            $table->integer('section_id')->unsigned()->nullable();
+            $table->integer('section_id')->unsigned();
             $table->integer('dutystation_id')->length(2)->unsigned();
             $table->string('emailAddress', 50)->unique()->nullable();
             $table->integer('mobileNumber')->length(10)->unsigned()->nullable();
