@@ -15,6 +15,7 @@ class CreateDutystationsTable extends Migration
     {
         Schema::create('dutystations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('dutystationname', 40)->unique();
             $table->timestamps();
         });
     }

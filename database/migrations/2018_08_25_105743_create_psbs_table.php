@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSectionsTable extends Migration
+class CreatePsbsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('psbs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sectioncode', 3)->unique();
-            $table->string('sectionname', 40)->unique();
+            $table->string('psbreference')->unique();
+            $table->date('psbdate');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('psbs');
     }
 }

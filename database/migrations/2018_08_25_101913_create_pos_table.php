@@ -15,6 +15,9 @@ class CreatePosTable extends Migration
     {
         Schema::create('pos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('ponumber')->length(10)->unique();
+            $table->integer('section_id');
+            $table->date('deliveryDate');
             $table->timestamps();
         });
     }
