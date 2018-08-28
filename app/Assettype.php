@@ -16,4 +16,3 @@ class Assettype extends Model
         return $this->hasMany('App\Asset');
     }
 }
-}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Po;
+use App\Section;
 use Illuminate\Http\Request;
 
 class PoController extends Controller
@@ -15,6 +16,8 @@ class PoController extends Controller
     public function index()
     {
         //
+        $pos = Po::orderBy('poNumber', 'asc')->paginate(2);
+        return view('pos.index')->with('pos', $pos);
     }
 
     /**
@@ -25,6 +28,8 @@ class PoController extends Controller
     public function create()
     {
         //
+        $sections = Section::orderBy('sectionname', 'asc')->pluck('sectionname', 'id');
+        return view('pos.create')->with('sections', $sections);
     }
 
     /**
@@ -36,6 +41,19 @@ class PoController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'ponumber' => 'required',
+            'deliverydate' => 'required',
+            'sections.0' => 'required'
+        ]);
+
+        $po = new Po;
+        $po->poNumber = $request->input('ponumber');
+        $po->deliveryDate = $request->input('deliverydate');
+        $po->section_id = $request->input('sections.0');
+        $po->save();
+
+        return redirect('/pos')->with('success', 'PO created');
     }
 
     /**
@@ -55,9 +73,12 @@ class PoController extends Controller
      * @param  \App\Po  $po
      * @return \Illuminate\Http\Response
      */
-    public function edit(Po $po)
+    public function edit($id)
     {
         //
+        $po = Po::find($id);
+        $sections = Section::orderBy('sectionname', 'asc')->pluck('sectionname', 'id');
+        return view('pos.edit')->with(['po' => $po, 'sections' => $sections]);
     }
 
     /**
