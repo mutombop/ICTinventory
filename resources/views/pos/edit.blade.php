@@ -3,7 +3,7 @@
 @section('content')
     <h2>Edit purchase order</h2>
     <hr>
-    {!! Form::open(['action' => 'PoController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['action' => 'PoController@update', 'method' => 'POST']) !!}
     <div class="form-row">
         <div class="col-md-6 form-group">
             {{Form::label('ponumber', 'PO number')}}

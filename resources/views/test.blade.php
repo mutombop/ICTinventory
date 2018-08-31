@@ -7,8 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-        <?php
-
-                        echo $assets ?>
+         <br/>
+        <?php echo $assets ?>
 </body>
 </html>

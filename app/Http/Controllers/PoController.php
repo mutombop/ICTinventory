@@ -62,7 +62,7 @@ class PoController extends Controller
      * @param  \App\Po  $po
      * @return \Illuminate\Http\Response
      */
-    public function show(Po $po)
+    public function show(Po $id)
     {
         //
     }
@@ -88,9 +88,14 @@ class PoController extends Controller
      * @param  \App\Po  $po
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Po $po)
+    public function update(Request $request, $id)
     {
         //
+        $po = Po::find($id);
+        $po->poNumber = $request->input('ponumber');
+        $po->deliveryDate = $request->input('deliverydate');
+        $po->section_id = $request->input('sections.0');
+        $po->save();
     }
 
     /**

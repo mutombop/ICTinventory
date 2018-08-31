@@ -24,7 +24,7 @@
                             <a class="dropdown-item" href="/reports/ictstock">Stock ICT</a>
                             <a class="dropdown-item" href="/reports/adminstock">Stock ADMIN</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">3-year Laptops</a>
+                            <a class="dropdown-item" href="/reports/assets3y">3-year Assets</a>
                         </div>
                     </li>
                   </ul>
